@@ -67,4 +67,44 @@ class ConstructionStages
 		]);
 		return $this->getSingle($this->db->lastInsertId());
 	}
+
+	public function patch(ConstructionStagesEdit $data, $id)
+	{	
+		$stmt = "UPDATE construction_stages SET ";
+		$params = [];
+		foreach ($data as $key => $value) {
+			if (in_array($key, ['startDate', 'endDate'])) {
+				$key = Helper::camelToSnake($key);
+			}
+		    // Append a new SET key/value pair
+		    $stmt .= "$key = :$key, ";
+		    //Prepared statements
+		    $params[$key] = $value;
+		}
+		//die(json_encode($params));
+
+		// Cut off last comma and append WHERE clause
+		$stmt = substr($stmt,0,-2)." WHERE id = :id";
+		// Store id for prepared statement
+		$params['id'] = $id;
+		// Prepare the query
+		$stmt = $this->db->prepare($stmt);
+		// Execute with parameters
+		$stmt->execute($params);
+		return $this->getSingle($id);
+	}
+
+	public function delete($id)
+	{	
+		$stmt = $this->db->prepare("
+			UPDATE construction_stages
+			SET status = :status
+			WHERE ID = :id
+		");
+		$stmt->execute([
+			'status' => 'DELETED',
+			'id' => $id
+		]);
+		return $this->getSingle($id);
+	}
 }
