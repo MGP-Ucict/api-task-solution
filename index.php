@@ -15,12 +15,8 @@ class Api
 	public function __construct()
 	{
 		self::$db = (new Database())->init();
-<<<<<<< HEAD
 		$uri = strtolower(trim((string)$_SERVER['REQUEST_URI'], '/'));
-=======
 
-		$uri = strtolower(trim((string)$_SERVER['PATH_INFO'], '/'));
->>>>>>> 08dc84ebbcd447a1c9e49ee7b2de6f2407a29f11
 		$httpVerb = isset($_SERVER['REQUEST_METHOD']) ? strtolower($_SERVER['REQUEST_METHOD']) : 'cli';
 
 		$wildcards = [
@@ -40,7 +36,7 @@ class Api
 				'class' => 'ConstructionStages',
 				'method' => 'post',
 				'bodyType' => 'ConstructionStagesCreate'
-			]
+			],
 			'patch constructionStages/(:num)' => [
 				'class' => 'ConstructionStages',
 				'method' => 'patch',

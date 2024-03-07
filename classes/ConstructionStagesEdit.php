@@ -13,6 +13,10 @@ class ConstructionStagesEdit
 
 	public function __construct($data) {
 		
+		Validator($data);
+		
+		Validator::getErrors();
+		
 		if(is_object($data)) {
 
 			$vars = get_object_vars($this);
@@ -20,11 +24,17 @@ class ConstructionStagesEdit
 			foreach ($vars as $name => $value) {
 
 				if (isset($data->$name) && !empty($data->$name)) {
+					
 					$this->$name = $data->$name;
-				} else {
+					
+				}
+				else {
+					
 					unset($this->$name);
 				}
 			}
 		}
+		
+		$this->duration = Helper::calculate($this->startDate, $this->endDate, $this->durationUnit);
 	}
 }

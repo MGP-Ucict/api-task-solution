@@ -81,7 +81,6 @@ class ConstructionStages
 		    //Prepared statements
 		    $params[$key] = $value;
 		}
-		//die(json_encode($params));
 
 		// Cut off last comma and append WHERE clause
 		$stmt = substr($stmt,0,-2)." WHERE id = :id";
