@@ -16,20 +16,18 @@ class Validator {
 		
 		$this->errors = [];
 		
-		if(is_object($data)) {
+		if (is_object($data)) {
 
 			$vars = get_object_vars($this);
 
 			foreach ($vars as $name => $value) {
-
-				if (isset($data->$name) && !empty($data->$name)) {
-					
+				
+				if ($name != 'errors') {
 					$validatingMethodName = 'validate'. ucfirst($name);
 					
-					$this->$name = $data->$name;
+					$this->$name = isset($data->$name) ? $data->$name : null;
 						
 					$this->$validatingMethodName();
-					
 				}
 			}
 		}
@@ -48,8 +46,7 @@ class Validator {
 	
 	public function validateName()
 	{
-		
-		if (is_null($this->name)) {
+		if (empty($this->name)) {
 			
 			$this->errors[] = ['name' => 'The field name is required!'];
 			
@@ -79,9 +76,11 @@ class Validator {
 	
 	public function validateStartDate()
 	{
-		if (is_null($this->startDate)) {
+		if (empty($this->startDate)) {
 			
 			$this->errors[] = ['start_date' => 'The field start_date is required!'];
+			
+			return false;
 		}
 
 		if (!Helper::isIsoDate($this->startDate)) {
@@ -94,9 +93,9 @@ class Validator {
 		return true;
 	}
 	
-	public function validateEndDate($value)
+	public function validateEndDate()
 	{
-		if (is_null($value))
+		if (is_null($this->endDate))
 		{
 			return true;
 			
