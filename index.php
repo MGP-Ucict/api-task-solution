@@ -63,7 +63,6 @@ class Api
 						$data = json_decode(file_get_contents('php://input'));
 						$params = [new $target['bodyType']($data)];
 					}
-					//die(json_encode($params));
 					$params = array_merge($params, $matches);
 					$response = call_user_func_array([new $target['class'], $target['method']], $params);
 					break;

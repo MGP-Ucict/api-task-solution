@@ -86,9 +86,7 @@ class ConstructionStages
 		$stmt = substr($stmt,0,-2)." WHERE id = :id";
 		// Store id for prepared statement
 		$params['id'] = $id;
-		// Prepare the query
 		$stmt = $this->db->prepare($stmt);
-		// Execute with parameters
 		$stmt->execute($params);
 		return $this->getSingle($id);
 	}
