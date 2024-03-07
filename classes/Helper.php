@@ -45,15 +45,18 @@ class Helper {
 	{
 		
 		if (!is_null($endDate)) {
+			
 			$startDateFormatted = DateTime::createFromFormat('m/d/Y H', $startDate);
+			
 			$endDateFormatted = DateTime::createFromFormat('m/d/Y H', $endDate);
+			
 			$difference = $startDateFormatted->diff($endDateFormatted)->days);
 			
 			if ($durationUnit === 'HOURS') {
 				
 				return $difference * 24;
 				
-			} else {
+			} else if ($durationUnit === 'WEEKS') {
 				
 				return round($difference / 7, 2);
 			}
