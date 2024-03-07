@@ -39,7 +39,11 @@ class Validator {
 			
 			http_response_code(422);
 			
-			throw new Exception(json_encode($this->errors));
+			header("Content-Type: application/json");
+			
+			echo json_encode($this->errors);
+			
+			exit();
 		}
 		
 	}
@@ -64,7 +68,7 @@ class Validator {
 	
 	public function validateStatus()
 	{
-		if (!in_array($this->status, ['NEW', 'PLANNED', 'DELETED'])) {
+		if (!is_null($this->status) && !in_array($this->status, ['NEW', 'PLANNED', 'DELETED'])) {
 			
 			$this->errors[] = ['status' => 'The field status must be NEW or PLANNED, or DELETED!'];
 			
@@ -126,7 +130,7 @@ class Validator {
 	
 	public function validateDurationUnit()
 	{
-		if (!in_array($this->durationUnit, ['HOURS', 'DAYS', 'WEEKS']))
+		if (!is_null($this->durationUnit) && !in_array($this->durationUnit, ['HOURS', 'DAYS', 'WEEKS']))
 		{
 			$this->errors[] = ['durationUnit' => 'The field durationUnit must be HOURS or DAYS, or WEEKS!'];
 			
