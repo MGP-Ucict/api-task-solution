@@ -13,9 +13,9 @@ class ConstructionStagesEdit
 
 	public function __construct($data) {
 		
-		Validator($data);
+		$validator = new Validator($data);
 		
-		Validator::getErrors();
+		$validator->getErrors();
 		
 		if(is_object($data)) {
 

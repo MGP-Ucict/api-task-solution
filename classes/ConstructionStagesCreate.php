@@ -13,10 +13,10 @@ class ConstructionStagesCreate
 
 	public function __construct($data) {
 		
-		Validator($data);
+		$validator = new Validator($data);
 		
-		Validator::getErrors();
-
+		$validator->getErrors();
+	
 		if(is_object($data)) {
 
 			$vars = get_object_vars($this);

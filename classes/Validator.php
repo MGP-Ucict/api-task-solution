@@ -24,22 +24,24 @@ class Validator {
 
 				if (isset($data->$name) && !empty($data->$name)) {
 					
-					$validateMethodName = 'validate'. Helper::camelToSnake($data->$name). '()';
+					$validatingMethodName = 'validate'. ucfirst($name);
 					
 					$this->$name = $data->$name;
 						
-					$this->$validateMethodName;
+					$this->$validatingMethodName();
 					
 				}
 			}
 		}
 	}
 	
-	public static function getErrors()
+	public function getErrors()
 	{
 		if (!empty($this->errors)) {
 			
-			throw Exception($this->errors, 422);
+			http_response_code(422);
+			
+			throw new Exception(json_encode($this->errors));
 		}
 		
 	}
@@ -48,7 +50,7 @@ class Validator {
 	{
 		if (mb_strlen($this->name, 'utf8') > 255) {
 			
-			$this->errors = ['name' => 'The field name must contain up to 255 characters!'];
+			$this->errors[] = ['name' => 'The field name must contain up to 255 characters!'];
 			
 			return false;
 		}
@@ -58,9 +60,9 @@ class Validator {
 	
 	public function validateStatus()
 	{
-		if (!in_array($this->status, ['NEW', 'PLANNED', 'DELETED']) {
+		if (!in_array($this->status, ['NEW', 'PLANNED', 'DELETED'])) {
 			
-			$this->errors = ['status' => 'The field status must be NEW or PLANNED, or DELETED!'];
+			$this->errors[] = ['status' => 'The field status must be NEW or PLANNED, or DELETED!'];
 			
 			return false;
 		}
@@ -70,9 +72,10 @@ class Validator {
 	
 	public function validateStartDate()
 	{
-		if (!Validator::isIsoDate($this->startDate) {
+
+		if (!Helper::isIsoDate($this->startDate)) {
 			
-			$this->errors = ['start_date' => 'The field start_date must be date in iso format!'];
+			$this->errors[] = ['start_date' => 'The field start_date must be date in iso format!'];
 			
 			return false;
         }
@@ -88,16 +91,16 @@ class Validator {
 			
 		} else {
 			
-			if (!Helper::isIsoDate($this->endDate) {
+			if (!Helper::isIsoDate($this->endDate)) {
 				
-				$this->errors = ['end_date' => 'The field end_date must be date in iso format!'];
+				$this->errors[] = ['end_date' => 'The field end_date must be date in iso format!'];
 				
 				return false;
 			}
 			
-			if (!Helper::compareDates($this->startDate, $this->endDate) {
+			if (!Helper::compareDates($this->startDate, $this->endDate)) {
 				
-				$this->errors = [ 'end_date' => 'The end_date must be later than start_date!'];
+				$this->errors[] = [ 'end_date' => 'The end_date must be later than start_date!'];
 				
 				return false;
 			}
@@ -115,7 +118,7 @@ class Validator {
 	{
 		if (!in_array($this->durationUnit, ['HOURS', 'DAYS', 'WEEKS']))
 		{
-			$this->errors = ['durationUnit' => 'The field durationUnit must be HOURS or DAYS, or WEEKS!'];
+			$this->errors[] = ['durationUnit' => 'The field durationUnit must be HOURS or DAYS, or WEEKS!'];
 			
 			return false;
 		}
@@ -133,7 +136,7 @@ class Validator {
 			return true;
 		}
 		
-		$this->errors = ['color' => 'The field color must be a valid HEX hour!'];
+		$this->errors[] = ['color' => 'The field color must be a valid HEX hour!'];
 		
 		return false;
 	}
@@ -142,7 +145,7 @@ class Validator {
 	{
 		if (strlen($this->externalId) > 255) {
 			
-			$this->errors = ['externalId' => 'The field externalId must be up to 255 characters!'];
+			$this->errors[] = ['externalId' => 'The field externalId must be up to 255 characters!'];
 			
 			return false;
 		}

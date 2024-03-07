@@ -19,17 +19,11 @@ class Helper {
 		return ltrim($result, '_'); 
 	}
 	
-	public static function isIsoDate($value)
-	{
-		 try {
-            new DateTime($value);
-            return true;
-        }
-        catch (Exception $e)
-        {
-           return false;
-        }
-		return false;
+	public static function isIsoDate($date)
+	{ 
+		$d = DateTime::createFromFormat('Y-m-d\TH:i:sZ', $date);
+		
+		return $d && $d->format('Y-m-d\TH:i:s\Z') == $date;
 	}
 	
 	
@@ -50,7 +44,7 @@ class Helper {
 			
 			$endDateFormatted = DateTime::createFromFormat('m/d/Y H', $endDate);
 			
-			$difference = $startDateFormatted->diff($endDateFormatted)->days);
+			$difference = $startDateFormatted->diff($endDateFormatted)->days;
 			
 			if ($durationUnit === 'HOURS') {
 				
