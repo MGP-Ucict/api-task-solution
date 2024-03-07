@@ -30,24 +30,11 @@ class ConstructionStagesCreate
 				}
 			}
 		}
-
-		$this->setDefaultStatus();
 		
 		$this->setDefaultDurationUnit();
 		
 		$this->duration = Helper::calculate($this->startDate, $this->endDate, $this->durationUnit);
-	}
-	
-	
-	public function setDefaultStatus()
-	{
-		
-		if (empty($this->status)) {
-			
-			$this->status = 'NEW';
-		}
-	}
-	
+	}	
 	
 	public function setDefaultDurationUnit()
 	{

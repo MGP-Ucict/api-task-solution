@@ -48,6 +48,13 @@ class Validator {
 	
 	public function validateName()
 	{
+		
+		if (is_null($this->name)) {
+			
+			$this->errors[] = ['name' => 'The field name is required!'];
+			
+			return false;
+		}
 		if (mb_strlen($this->name, 'utf8') > 255) {
 			
 			$this->errors[] = ['name' => 'The field name must contain up to 255 characters!'];
@@ -72,6 +79,10 @@ class Validator {
 	
 	public function validateStartDate()
 	{
+		if (is_null($this->startDate)) {
+			
+			$this->errors[] = ['start_date' => 'The field start_date is required!'];
+		}
 
 		if (!Helper::isIsoDate($this->startDate)) {
 			
