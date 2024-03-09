@@ -61,8 +61,6 @@ class Helper {
 			//get days reminder
 			$days = $differenceObj->d;
 			
-			//print_r($differenceObj);
-			
 			//calculate whole hours difference
 			$differenceInHours = $hours + ($days * 24) + ($months * 30 * 24) + ($years * 12 * 30 * 24);
 			
