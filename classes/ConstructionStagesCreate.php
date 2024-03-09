@@ -33,6 +33,8 @@ class ConstructionStagesCreate
 		
 		$this->setDefaultDurationUnit();
 		
+		$this->setDefaultStatus();
+		
 		$this->duration = Helper::calculate($this->startDate, $this->endDate, $this->durationUnit);
 	}	
 	
@@ -41,6 +43,14 @@ class ConstructionStagesCreate
 		if (empty($this->durationUnit)) {
 			
 			$this->durationUnit = 'DAYS';
+		}
+	}
+	
+	public function setDefaultStatus()
+	{
+		if (empty($this->status)) {
+			
+			$this->status = 'NEW';
 		}
 	}
 }

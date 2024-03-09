@@ -23,14 +23,17 @@ class ConstructionStagesEdit
 
 			foreach ($vars as $name => $value) {
 
-				if (isset($data->$name) && !empty($data->$name)) {
+				if (isset($data->$name)) {
 					
-					$this->$name = $data->$name;
+					if (!empty($data->$name)) {
 					
-				}
-				else {
-					
-					unset($this->$name);
+						$this->$name = $data->$name;
+						
+					}
+					else {
+						
+						unset($this->$name);
+					}
 				}
 			}
 		}

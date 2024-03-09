@@ -40,22 +40,42 @@ class Helper {
 		
 		if (!is_null($endDate)) {
 			
-			$startDateFormatted = DateTime::createFromFormat('m/d/Y H', $startDate);
+			//convert date string to DateTime object
+			$startDate = new DateTime($startDate);
 			
-			$endDateFormatted = DateTime::createFromFormat('m/d/Y H', $endDate);
+			//convert date string to DateTime object
+			$endDate = new DateTime($endDate);
+		
+			//get object with difference between $endDate and $startDate
+			$difference = $startDate->diff($endDate);
+
+			//get hours reminder
+			$hours = $difference->h;
+		
+			//get whole days
+			$days = $difference->d;
 			
-			$difference = $startDateFormatted->diff($endDateFormatted)->days;
+			//calculate whole hours difference
+			$differenceInHours = $hours + ( $days * 24);
 			
-			if ($durationUnit === 'HOURS') {
+			// rounded in 2 digits after decimal point - 1 h is 0.04 of 1 day, because the precision is of whole hours
+			// and minutes are ignored
+			$differenceInDays = round($differenceInHours / 24, 2);
+			
+			if ($durationUnit === 'DAYS') {
 				
-				return $difference * 24;
+				return $differenceInDays;
 				
-			} else if ($durationUnit === 'WEEKS') {
+			}  else if ($durationUnit === 'HOURS') {
 				
-				return round($difference / 7, 2);
+				return $differenceInHours;
 			}
-			
-			return $difference;
+			else if ($durationUnit === 'WEEKS') {
+				
+				// rounded in 4 digits after decimal point - 1 h is 0.006 of 1 week, because the precision is of whole hours
+				// and minutes are ignored
+				return round($differenceInDays / 7, 3);
+			}
 		}
 		
 		return null;

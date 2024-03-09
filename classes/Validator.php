@@ -23,6 +23,7 @@ class Validator {
 			foreach ($vars as $name => $value) {
 				
 				if ($name != 'errors') {
+					
 					$validatingMethodName = 'validate'. ucfirst($name);
 					
 					$this->$name = isset($data->$name) ? $data->$name : null;
@@ -82,14 +83,14 @@ class Validator {
 	{
 		if (empty($this->startDate)) {
 			
-			$this->errors[] = ['start_date' => 'The field start_date is required!'];
+			$this->errors[] = ['startDate' => 'The field Start date is required!'];
 			
 			return false;
 		}
 
 		if (!Helper::isIsoDate($this->startDate)) {
 			
-			$this->errors[] = ['start_date' => 'The field start_date must be date in iso format!'];
+			$this->errors[] = ['startDate' => 'The field Start date must be date in iso format!'];
 			
 			return false;
         }
@@ -107,14 +108,14 @@ class Validator {
 			
 			if (!Helper::isIsoDate($this->endDate)) {
 				
-				$this->errors[] = ['end_date' => 'The field end_date must be date in iso format!'];
+				$this->errors[] = ['endDate' => 'The field End date must be date in iso format!'];
 				
 				return false;
 			}
 			
 			if (!Helper::compareDates($this->startDate, $this->endDate)) {
 				
-				$this->errors[] = [ 'end_date' => 'The end_date must be later than start_date!'];
+				$this->errors[] = [ 'end_date' => 'The End date must be later than Start date!'];
 				
 				return false;
 			}
