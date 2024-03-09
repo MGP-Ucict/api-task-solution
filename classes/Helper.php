@@ -46,17 +46,25 @@ class Helper {
 			//convert date string to DateTime object
 			$endDate = new DateTime($endDate);
 		
-			//get object with difference between $endDate and $startDate
-			$difference = $startDate->diff($endDate);
-
+			//get DateInterval object with difference between $endDate and $startDate
+			$differenceObj = $startDate->diff($endDate);
+			
+			//get years
+			$years = $differenceObj->y;
+			
+			//get months reminder
+			$months = $differenceObj->m;
+			
 			//get hours reminder
-			$hours = $difference->h;
+			$hours = $differenceObj->h;
 		
-			//get whole days
-			$days = $difference->d;
+			//get days reminder
+			$days = $differenceObj->d;
+			
+			//print_r($differenceObj);
 			
 			//calculate whole hours difference
-			$differenceInHours = $hours + ( $days * 24);
+			$differenceInHours = $hours + ($days * 24) + ($months * 30 * 24) + ($years * 12 * 30 * 24);
 			
 			// rounded in 2 digits after decimal point - 1 h is 0.04 of 1 day, because the precision is of whole hours
 			// and minutes are ignored
