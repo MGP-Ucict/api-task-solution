@@ -38,6 +38,7 @@ class Validator {
 	{
 		if (!empty($this->errors)) {
 			
+			//set unprocessable entity status code
 			http_response_code(422);
 			
 			header("Content-Type: application/json");
