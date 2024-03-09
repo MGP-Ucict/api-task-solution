@@ -62,6 +62,8 @@ class Helper {
 			$days = $differenceObj->d;
 			
 			//calculate whole hours difference
+			// I assume,  that 1 month has 30 days
+			// 1 year has 12 months
 			$differenceInHours = $hours + ($days * 24) + ($months * 30 * 24) + ($years * 12 * 30 * 24);
 			
 			// rounded in 2 digits after decimal point - 1 h is 0.04 of 1 day, because the precision is of whole hours
