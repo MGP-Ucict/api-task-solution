@@ -40,32 +40,9 @@ class Helper {
 		
 		if (!is_null($endDate)) {
 			
-			//convert date string to DateTime object
-			$startDate = new DateTime($startDate);
-			
-			//convert date string to DateTime object
-			$endDate = new DateTime($endDate);
+			// compute difference and round to whole hour
+			$differenceInHours = round((strtotime($endDate) - strtotime($startDate))/3600, 1);
 		
-			//get DateInterval object with difference between $endDate and $startDate
-			$differenceObj = $startDate->diff($endDate);
-			
-			//get years
-			$years = $differenceObj->y;
-			
-			//get months reminder
-			$months = $differenceObj->m;
-			
-			//get hours reminder
-			$hours = $differenceObj->h;
-		
-			//get days reminder
-			$days = $differenceObj->d;
-			
-			//calculate whole hours difference
-			// I assume,  that 1 month has 30 days
-			// 1 year has 12 months
-			$differenceInHours = $hours + ($days * 24) + ($months * 30 * 24) + ($years * 12 * 30 * 24);
-			
 			// rounded in 2 digits after decimal point - 1 h is 0.04 of 1 day, because the precision is of whole hours
 			// and minutes are ignored
 			$differenceInDays = round($differenceInHours / 24, 2);

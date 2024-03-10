@@ -54,13 +54,13 @@ class Validator {
 	{
 		if (empty($this->name)) {
 			
-			$this->errors[] = ['name' => 'The field name is required!'];
+			$this->errors[] = ['name' => 'The field Name is required!'];
 			
 			return false;
 		}
-		if (mb_strlen($this->name, 'utf8') > 255) {
+		if (mb_strlen($this->name, 'UTF-8') > 255) {
 			
-			$this->errors[] = ['name' => 'The field name must contain up to 255 characters!'];
+			$this->errors[] = ['name' => 'The field Name must contain up to 255 characters!'];
 			
 			return false;
 		}
@@ -72,7 +72,7 @@ class Validator {
 	{
 		if (!is_null($this->status) && !in_array($this->status, ['NEW', 'PLANNED', 'DELETED'])) {
 			
-			$this->errors[] = ['status' => 'The field status must be NEW or PLANNED, or DELETED!'];
+			$this->errors[] = ['status' => 'The field Status must be NEW or PLANNED, or DELETED!'];
 			
 			return false;
 		}
@@ -134,7 +134,7 @@ class Validator {
 	{
 		if (!is_null($this->durationUnit) && !in_array($this->durationUnit, ['HOURS', 'DAYS', 'WEEKS']))
 		{
-			$this->errors[] = ['durationUnit' => 'The field durationUnit must be HOURS or DAYS, or WEEKS!'];
+			$this->errors[] = ['durationUnit' => 'The field Duration unit must be HOURS or DAYS, or WEEKS!'];
 			
 			return false;
 		}
@@ -152,16 +152,16 @@ class Validator {
 			return true;
 		}
 		
-		$this->errors[] = ['color' => 'The field color must be a valid HEX hour!'];
+		$this->errors[] = ['color' => 'The field Color must be a valid HEX hour!'];
 		
 		return false;
 	}
 	
 	public function validateExternalId()
 	{
-		if (strlen($this->externalId) > 255) {
+		if (mb_strlen($this->externalId, 'UTF-8') > 255) {
 			
-			$this->errors[] = ['externalId' => 'The field externalId must be up to 255 characters!'];
+			$this->errors[] = ['externalId' => 'The field External Id must be up to 255 characters!'];
 			
 			return false;
 		}
