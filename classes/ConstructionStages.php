@@ -158,15 +158,15 @@ class ConstructionStages
 	*
 	* @response
 	*  {
-	*		"id": 165,
-	*		"name": "Stage1",
-	*		"startDate": "2023-01-01T00:00:00Z",
-	*		"endDate": "2024-03-31T10:08:00Z",
-	*		"duration": 455.42,
-	*		"durationUnit": "DAYS",
-	*		"color": "#99FF70",
-	*		"externalId": "231231241234432",
-	*		"status": "PLANNED"
+	*	"id": 165,
+	*	"name": "Stage1",
+	*	"startDate": "2023-01-01T00:00:00Z",
+	*	"endDate": "2024-03-31T10:08:00Z",
+	*	"duration": 455.42,
+	*	"durationUnit": "DAYS",
+	*	"color": "#99FF70",
+	*	"externalId": "231231241234432",
+	*	"status": "PLANNED"
 	*   }
 	*/
 	public function patch(ConstructionStagesEdit $data, $id)
@@ -199,15 +199,15 @@ class ConstructionStages
 	* 
 	* @response
 	*  {
-	*		"id": 165,
-	*		"name": "Stage1",
-	*		"startDate": "2023-01-01T00:00:00Z",
-	*		"endDate": "2024-03-31T10:08:00Z",
-	*		"duration": 455.42,
-	*		"durationUnit": "DAYS",
-	*		"color": "#99FF70",
-	*		"externalId": "231231241234432",
-	*		"status": "DELETED"
+	*	"id": 165,
+	*	"name": "Stage1",
+	*	"startDate": "2023-01-01T00:00:00Z",
+	*	"endDate": "2024-03-31T10:08:00Z",
+	*	"duration": 455.42,
+	*	"durationUnit": "DAYS",
+	*	"color": "#99FF70",
+	*	"externalId": "231231241234432",
+	*	"status": "DELETED"
 	*   }
 	*/
 	public function delete($id)
