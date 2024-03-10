@@ -15,35 +15,36 @@ class ConstructionStages
 		$this->db = Api::getDb();
 	}
 
-	/**
-     * Lists construction stages.
-     *
-     * @response
-	 *		[
-	 *			{
-	 *			"id": 1,
-	 *			"name": "Pension Mühlbachtal 36",
-	 *			"startDate": "2021-05-01T00:00:00Z",
-	 *			"endDate": null,
-	 *			"duration": null,
-	 *			"durationUnit": null,
-	 *			"color": null,
-	 *			"externalId": null,
-	 *			"status": "NEW"
-	 *			},
-	 *			{
-	 *			"id": 2,
-	 *			"name": "Reinigung VERO PB",
-	 *			"startDate": "2021-05-01T00:00:00Z",
-	 *			"endDate": null,
-	 *			"duration": null,
-	 *			"durationUnit": null,
-	 *			"color": null,
-	 *			"externalId": null,
-	 *			"status": "NEW"
-	 *			}
-	 *		]
-     */
+   /**
+	* Lists construction stages.
+	*
+	* @response
+	* [
+	*	{
+	*		"id": 1,
+	*		"name": "Pension Mühlbachtal 36",
+	* 		"startDate": "2021-05-01T00:00:00Z",
+	*		"endDate": null,
+	*		"duration": null,
+	*		"durationUnit": null,
+	*		"color": null,
+	*		"externalId": null,
+	*		"status": "NEW"
+	*	},
+	*	{
+	*		"id": 2,
+	*		"name": "Reinigung VERO PB",
+	*		"startDate": "2021-05-01T00:00:00Z",
+	*		"endDate": null,
+	*		"duration": null,
+	*		"durationUnit": null,
+	*		"color": null,
+	*		"externalId": null,
+	*		"status": "NEW"
+	*		
+	*	}
+	* ]
+	*/
 	public function getAll()
 	{
 		$stmt = $this->db->prepare("
@@ -63,25 +64,23 @@ class ConstructionStages
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	/**
-     * Shows a construction stage.
-     *
-	 * @quryParam id integer The identifier of the construction stage.
-	 *
-     * @response
-     *  {
-     *    "data": {
-	 *		"id": 165,
-	 *		"name": "Stage1",
-	 *		"startDate": "2023-01-01T00:00:00Z",
-	 *		"endDate": "2024-03-31T10:08:00Z",
-	 *		"duration": 455.42,
-	 *		"durationUnit": "DAYS",
-	 *		"color": "#99FF70",
-	 *		"externalId": "231231241234432",
-	 *		"status": "NEW"
-     *   }
-     */
+   /**
+	* Shows a construction stage.
+	* @quryParam id integer The identifier of the construction stage.
+	* 
+	* @response
+	* {
+	*	"id": 165,
+	*	"name": "Stage1",
+	*	"startDate": "2023-01-01T00:00:00Z",
+	*	"endDate": "2024-03-31T10:08:00Z",
+	*	"duration": 455.42,
+	*	"durationUnit": "DAYS",
+	*	"color": "#99FF70",
+	*	"extenalId": "1234",
+	*	"status": "NEW",
+	* }
+	*/
 	public function getSingle($id)
 	{
 		$stmt = $this->db->prepare("
