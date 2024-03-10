@@ -43,7 +43,6 @@ class Validator {
 	 *
 	 * @return void.
 	 */
-		
 	public function getErrors()
 	{
 		if (!empty($this->errors)) {

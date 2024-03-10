@@ -15,7 +15,7 @@ class ConstructionStages
 		$this->db = Api::getDb();
 	}
 
-   /**
+	/**
 	* Lists construction stages.
 	*
 	* @response
@@ -64,7 +64,7 @@ class ConstructionStages
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-   /**
+	/**
 	* Shows a construction stage.
 	* @quryParam id integer The identifier of the construction stage.
 	* 
@@ -103,28 +103,28 @@ class ConstructionStages
 
 
 	/**
-     * Creates a construction stage by input data.
-     *
-     * @bodyParam name string The name of the construction stage. Validation: required
-     * @bodyParam startDate string The start date of the construction stage in iso8601. Validation: required
-	 * @bodyParam endDate string The end date of the construction stage in iso8601.
-	 * @bodyParam durationUnit string The durationUnit of the construction stage.
-	 * @bodyParam color string The color of the construction stage in HEX format.
-     * @bodyParam externalId string The externalId of the construction stage
-	 *
-     * @response
-     *  {
-	 *		"id": 165,
-	 *		"name": "Stage1",
-	 *		"startDate": "2023-01-01T00:00:00Z",
-	 *		"endDate": "2024-03-31T10:08:00Z",
-	 *		"duration": 455.42,
-	 *		"durationUnit": "DAYS",
-	 *		"color": "#99FF70",
-	 *		"externalId": "231231241234432",
-	 *		"status": "NEW"
-     *   }
-     */
+	* Creates a constructio stage by input data
+	*
+	* @bodyParam name string The name of the construction stage. Validation: required
+	* @bodyParam startDate string The start date of the construction stage in iso8601. Validation: required
+	* @bodyParam endDate string The end date of the construction stage in iso8601.
+	* @bodyParam durationUnit string The durationUnit of the construction stage.
+	* @bodyParam color string The color of the construction stage in HEX format.
+	* @bodyParam externalId string The externalId of the construction stage
+	* 
+	* @response
+	* {
+	*	"id": 165,
+	*	"name": "Stage1",
+	*	"startDate": "2023-01-01T00:00:00Z",
+	*	"endDate": "2024-03-31T10:08:00Z",
+	*	"duration": 455.42,
+	*	"durationUnit": "DAYS",
+	*	"color": "#99FF70",
+	*	"extenalId": "1234",
+	*	"status": "NEW",
+	* }
+	*/
 	public function post(ConstructionStagesCreate $data)
 	{
 		$stmt = $this->db->prepare("
@@ -146,29 +146,29 @@ class ConstructionStages
 	}
 
 	/**
-     * Edits a construction stage by input data.
-     *
-	 * @quryParam id integer The identifier of the construction stage.
-     * @bodyParam name string The name of the construction stage. Validation: required
-     * @bodyParam startDate string The start date of the construction stage in iso8601. Validation: required
-	 * @bodyParam endDate string The end date of the construction stage in iso8601.
-	 * @bodyParam durationUnit string The durationUnit of the construction stage.
-	 * @bodyParam color string The color of the construction stage in HEX format.
-     * @bodyParam externalId string The externalId of the construction stage
-	 *
-     * @response
-     *  {
-	 *		"id": 165,
-	 *		"name": "Stage1",
-	 *		"startDate": "2023-01-01T00:00:00Z",
-	 *		"endDate": "2024-03-31T10:08:00Z",
-	 *		"duration": 455.42,
-	 *		"durationUnit": "DAYS",
-	 *		"color": "#99FF70",
-	 *		"externalId": "231231241234432",
-	 *		"status": "NEW"
-     *   }
-     */
+	* Edits a construction stage by input data.
+	*
+	* @quryParam id integer The identifier of the construction stage.
+	* @bodyParam name string The name of the construction stage. Validation: required
+	* @bodyParam startDate string The start date of the construction stage in iso8601. Validation: required
+	* @bodyParam endDate string The end date of the construction stage in iso8601.
+	* @bodyParam durationUnit string The durationUnit of the construction stage.
+	* @bodyParam color string The color of the construction stage in HEX format.
+	* @bodyParam externalId string The externalId of the construction stage
+	*
+	* @response
+	*  {
+	*		"id": 165,
+	*		"name": "Stage1",
+	*		"startDate": "2023-01-01T00:00:00Z",
+	*		"endDate": "2024-03-31T10:08:00Z",
+	*		"duration": 455.42,
+	*		"durationUnit": "DAYS",
+	*		"color": "#99FF70",
+	*		"externalId": "231231241234432",
+	*		"status": "PLANNED"
+	*   }
+	*/
 	public function patch(ConstructionStagesEdit $data, $id)
 	{	
 		$stmt = "UPDATE construction_stages SET ";
@@ -193,23 +193,23 @@ class ConstructionStages
 	}
 
 	/**
-     * Deletes a construction stage.
-     *
-	 * @quryParam id integer The identifier of the construction stage
-	 *
-     * @response
-     *  {
-	 *		"id": 165,
-	 *		"name": "Stage1",
-	 *		"startDate": "2023-01-01T00:00:00Z",
-	 *		"endDate": "2024-03-31T10:08:00Z",
-	 *		"duration": 455.42,
-	 *		"durationUnit": "DAYS",
-	 *		"color": "#99FF70",
-	 *		"externalId": "231231241234432",
-	 *		"status": "NEW",
-     *   }
-     */
+	* Deletes a construction stage.
+	* 
+	* @queryParam id integer The identifier of the construction stage.
+	* 
+	* @response
+	*  {
+	*		"id": 165,
+	*		"name": "Stage1",
+	*		"startDate": "2023-01-01T00:00:00Z",
+	*		"endDate": "2024-03-31T10:08:00Z",
+	*		"duration": 455.42,
+	*		"durationUnit": "DAYS",
+	*		"color": "#99FF70",
+	*		"externalId": "231231241234432",
+	*		"status": "DELETED"
+	*   }
+	*/
 	public function delete($id)
 	{	
 		$stmt = $this->db->prepare("
