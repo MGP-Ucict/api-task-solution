@@ -66,7 +66,7 @@ class ConstructionStages
 
 	/**
 	* Shows a construction stage.
-	* @quryParam id integer The identifier of the construction stage.
+	* @queryParam id integer The identifier of the construction stage.
 	* 
 	* @response
 	* {
@@ -148,7 +148,7 @@ class ConstructionStages
 	/**
 	* Edits a construction stage by input data.
 	*
-	* @quryParam id integer The identifier of the construction stage.
+	* @queryParam id integer The identifier of the construction stage.
 	* @bodyParam name string The name of the construction stage. Validation: required
 	* @bodyParam startDate string The start date of the construction stage in iso8601. Validation: required
 	* @bodyParam endDate string The end date of the construction stage in iso8601.
