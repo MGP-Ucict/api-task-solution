@@ -43,7 +43,7 @@ class Helper {
 			// compute difference and round to whole hour
 			$differenceInHours = round((strtotime($endDate) - strtotime($startDate))/3600, 1);
 		
-			// rounded in 2 digits after decimal point - 1 h is 0.04 of 1 day, because the precision is of whole hours
+			// rounded in 2 digits after decimal point - 1 h is 0.04 of 1 day, because the precision is hours
 			// and minutes are ignored
 			$differenceInDays = round($differenceInHours / 24, 2);
 			
@@ -57,7 +57,7 @@ class Helper {
 			}
 			else if ($durationUnit === 'WEEKS') {
 				
-				// rounded in 4 digits after decimal point - 1 h is 0.006 of 1 week, because the precision is of whole hours
+				// rounded in 4 digits after decimal point - 1 h is 0.006 of 1 week, because the precision is hours
 				// and minutes are ignored
 				return round($differenceInDays / 7, 3);
 			}
