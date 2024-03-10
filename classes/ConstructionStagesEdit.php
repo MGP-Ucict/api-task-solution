@@ -29,7 +29,8 @@ class ConstructionStagesEdit
 					
 						$this->$name = $data->$name;
 						
-					}
+					} 
+					// pass only not empty fields 
 					else {
 						
 						unset($this->$name);
@@ -38,6 +39,7 @@ class ConstructionStagesEdit
 			}
 		}
 		
+		//set computed value of duration
 		$this->duration = Helper::calculate($this->startDate, $this->endDate, $this->durationUnit);
 	}
 }
