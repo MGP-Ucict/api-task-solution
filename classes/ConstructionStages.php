@@ -110,7 +110,8 @@ class ConstructionStages
 	* @bodyParam endDate string The end date of the construction stage in iso8601.
 	* @bodyParam durationUnit string The durationUnit of the construction stage.
 	* @bodyParam color string The color of the construction stage in HEX format.
-	* @bodyParam externalId string The externalId of the construction stage
+	* @bodyParam externalId string The externalId of the construction stage.
+	* @bodyParam status string The status of the construction stage.
 	* 
 	* @response
 	* {
@@ -154,7 +155,8 @@ class ConstructionStages
 	* @bodyParam endDate string The end date of the construction stage in iso8601.
 	* @bodyParam durationUnit string The durationUnit of the construction stage.
 	* @bodyParam color string The color of the construction stage in HEX format.
-	* @bodyParam externalId string The externalId of the construction stage
+	* @bodyParam externalId string The externalId of the construction stage.
+	* @bodyParam status string The status of the construction stage.
 	*
 	* @response
 	*  {

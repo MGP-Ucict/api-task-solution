@@ -208,12 +208,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Helper\u003A\u003AcompareDates\u0028\u0029",
             "name": "compareDates",
-            "summary": "Checks\u0020whether\u0020\u0024endDate\u0020is\u0020later\u0020than\u0020\u0024startDate",
+            "summary": "Checks\u0020whether\u0020\u0024endDate\u0020is\u0020later\u0020than\u0020\u0024startDate.",
             "url": "classes/Helper.html#method_compareDates"
         },                {
             "fqsen": "\\Helper\u003A\u003Acalculate\u0028\u0029",
             "name": "calculate",
-            "summary": "Computes\u0020duration\u0020of\u0020construction\u0020stage",
+            "summary": "Computes\u0020duration\u0020of\u0020construction\u0020stage.",
             "url": "classes/Helper.html#method_calculate"
         },                {
             "fqsen": "\\Validator",
