@@ -78,7 +78,7 @@ class ConstructionStages
 	*	"durationUnit": "DAYS",
 	*	"color": "#99FF70",
 	*	"extenalId": "1234",
-	*	"status": "NEW",
+	*	"status": "NEW"
 	* }
 	*/
 	public function getSingle($id)
@@ -123,7 +123,7 @@ class ConstructionStages
 	*	"durationUnit": "DAYS",
 	*	"color": "#99FF70",
 	*	"extenalId": "1234",
-	*	"status": "NEW",
+	*	"status": "NEW"
 	* }
 	*/
 	public function post(ConstructionStagesCreate $data)
