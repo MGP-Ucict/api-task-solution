@@ -124,7 +124,7 @@ class Validator {
 			$this->errors[] = ['startDate' => 'The field Start date must be date in iso format!'];
 			
 			return false;
-        }
+        	}
 		
 		return true;
 	}
@@ -158,7 +158,7 @@ class Validator {
 				
 				return false;
 			}
-        }
+        	}
 		
 		return true;
 	}
