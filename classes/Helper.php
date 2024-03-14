@@ -86,7 +86,7 @@ class Helper {
 			}
 			else if ($durationUnit === 'WEEKS') {
 				
-				// rounded in 4 digits after decimal point - 1 h is 0.006 of 1 week, because the precision is hours
+				// rounded in 3 digits after decimal point - 1 h is 0.006 of 1 week, because the precision is hours
 				// and minutes are ignored
 				return round($differenceInHours / (24 * 7) , 3);
 			}
