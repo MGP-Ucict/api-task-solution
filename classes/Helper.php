@@ -79,9 +79,9 @@ class Helper {
 			}
 			else if ($durationUnit === 'DAYS') {
 				
-				// rounded in 2 digits after decimal point - 1 h is 0.04 of 1 day, because the precision is hours
+				// rounded in 3 digits after decimal point - 1 h is 0.042 of 1 day, because the precision is hours
 				// and minutes are ignored
-				 return  round($differenceInHours / 24, 2);
+				 return  round($differenceInHours / 24, 3);
 				
 			}
 			else if ($durationUnit === 'WEEKS') {
